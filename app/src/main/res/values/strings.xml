@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AboutMe</string>
+
+    <string name="main_info_owner_name">Paulo H Sousa</string>
+    <string name="main_info_owner_bio">
+        Hi, my name is Paulo Henrique.
+    \n\nI like reading, fantasy genre mostly. The Wheel of Time, A Song of Ice and Fire, The Kingkiller Chronicle.
+    \n\nI also enjoy TV Shows, my favorite is Supernatural. Others I like to watch are Game of Thrones, Sherlock, Sons of Anarchy and so on.
+    </string>
+
+    <string name="content_description_yellow_start">Yellow Start</string>
+</resources>
