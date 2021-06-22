@@ -26,6 +26,7 @@
         android:textAlignment="center"
         android:hint="@string/main_nickname_hint"
         style="@style/GeneralTextStyle"
+        android:importantForAutofill="no"
         />
 
     <Button
