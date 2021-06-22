@@ -4,32 +4,32 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.button_done).setOnClickListener {
-            addNickname(it)
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
+
+        viewBinding.buttonDone.setOnClickListener {
+            addNickname()
         }
     }
 
-    private fun addNickname(view: View) {
-        val nicknameEdit = findViewById<EditText>(R.id.edit_nickname)
-        val nicknameText = findViewById<TextView>(R.id.text_nickname)
-
-        nicknameText.text = nicknameEdit.text.toString()
-        nicknameEdit.visibility = View.GONE
-        view.visibility = View.GONE
-        nicknameText.visibility = View.VISIBLE
+    private fun addNickname() {
+        viewBinding.textNickname.text = viewBinding.editNickname.text.toString()
+        viewBinding.editNickname.visibility = View.GONE
+        viewBinding.buttonDone.visibility = View.GONE
+        viewBinding.textNickname.visibility = View.VISIBLE
 
         // Hide the keyboard.
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        imm.hideSoftInputFromWindow(viewBinding.editNickname.windowToken, 0)
     }
 }
