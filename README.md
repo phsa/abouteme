@@ -1,3 +1,3 @@
 ### About Me from Udacity's Android free course
 
-A simple About Me app. Pratice from the Udacity's "Developing Android Apps with Kotlin" course with some refactoring.
+A simple About Me app. Pratice from the Udacity's "Developing Android Apps with Kotlin" course with some refactoring of mine.
