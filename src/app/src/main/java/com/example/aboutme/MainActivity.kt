@@ -3,29 +3,34 @@ package com.example.aboutme
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewBinding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private val myName = MyName("Paulo H Sousa")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.myName = myName
 
-        viewBinding.buttonDone.setOnClickListener {
+        binding.buttonDone.setOnClickListener {
             addNickname()
         }
     }
 
     private fun addNickname() {
-        viewBinding.textNickname.text = viewBinding.editNickname.text.toString()
-        viewBinding.editNickname.visibility = View.GONE
-        viewBinding.buttonDone.visibility = View.GONE
-        viewBinding.textNickname.visibility = View.VISIBLE
+        binding.apply {
+            myName?.nickname = editNickname.text.toString()
+            invalidateAll()
+            editNickname.visibility = View.GONE
+            buttonDone.visibility = View.GONE
+            textNickname.visibility = View.VISIBLE
+        }
 
-        CustomSystemService.hideKeyboard(applicationContext, viewBinding.editNickname)
+        CustomSystemService.hideKeyboard(applicationContext, binding.editNickname)
     }
 }
